@@ -1,5 +1,8 @@
 {
-    "name": "korotovsky/sso-sp-bundle",
+    "name": "sigysmund/sso-sp-bundle",
+    "replace": {
+        "korotovsky/sso-sp-bundle": "0.3.*"
+    },
     "type": "symfony-bundle",
     "description": "Single-sign-on bundle for Symfony2. Service Provider part.",
     "keywords": ["single-sign-on", "sso", "login", "otp"],
