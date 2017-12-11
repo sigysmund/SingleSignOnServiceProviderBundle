@@ -5,6 +5,7 @@ namespace Krtv\Bundle\SingleSignOnServiceProviderBundle\EntryPoint;
 use Krtv\Bundle\SingleSignOnServiceProviderBundle\Context\AuthenticationContext;
 use Krtv\Bundle\SingleSignOnServiceProviderBundle\Context\AuthenticationContextFactory;
 use Symfony\Component\HttpFoundation\ParameterBag;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\UriSigner;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
@@ -129,6 +130,6 @@ class SingleSignOnAuthenticationEntryPoint implements AuthenticationEntryPointIn
         // Sign data
         $redirectUri = $this->uriSigner->sign($redirectUri);
 
-        return $this->httpUtils->createRedirectResponse($request, $redirectUri);
+        return new RedirectResponse($this->httpUtils->generateUri($request, $redirectUri), 302);
     }
 }
